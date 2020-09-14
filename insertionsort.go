@@ -20,27 +20,16 @@ import "fmt"
 
 func main() {
 	data := []int{2, 8, 7, 1, 3, 5, 6, 4}
-	fmt.Printf("Quick Sort: %v --> ", data)
-	quickSort(data)
+	fmt.Printf("Insertion Sort: %v --> ", data)
+	insertionSort(data)
 	fmt.Println(data)
 }
 
-func quickSort(data []int) {
-	if len(data) > 1 {
-		pivotIndex := partition(data)
-		quickSort(data[:pivotIndex])
-		quickSort(data[pivotIndex:])
+func insertionSort(data []int) {
+	for i := 0; i < len(data); i++ {
+		for j := i; j > 0 && data[j - 1] > data[j]; j-- {
+			data[j - 1], data[j] = data[j], data[j - 1]
+		}
 	}
 }
 
-func partition(data []int) int {
-	pivotValue := data[len(data)-1]
-	leftIndex := -1
-	for i := 0; i < len(data); i++ {
-		if data[i] <= pivotValue {
-			leftIndex++
-			data[leftIndex], data[i] = data[i], data[leftIndex]
-		}
-	}
-	return leftIndex
-}

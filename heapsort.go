@@ -20,7 +20,7 @@ import "fmt"
 
 func main() {
 	data := []int{2, 8, 7, 1, 3, 5, 6, 4}
-	fmt.Printf("%v --> ", data)
+	fmt.Printf("Heap Sort: %v --> ", data)
 	heapSort(data)
 	fmt.Println(data)
 }

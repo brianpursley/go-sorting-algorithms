@@ -20,16 +20,20 @@ import "fmt"
 
 func main() {
 	data := []int{2, 8, 7, 1, 3, 5, 6, 4}
-	fmt.Printf("%v --> ", data)
-	mergeSort(data, 0, len(data)-1)
+	fmt.Printf("Merge Sort: %v --> ", data)
+	mergeSort(data)
 	fmt.Println(data)
 }
 
-func mergeSort(data []int, i, j int) {
+func mergeSort(data []int) {
+	mergeSortInternal(data, 0, len(data)-1)
+}
+
+func mergeSortInternal(data []int, i, j int) {
 	if i < j {
 		mid := (i + j) / 2
-		mergeSort(data, i, mid)
-		mergeSort(data, mid+1, j)
+		mergeSortInternal(data, i, mid)
+		mergeSortInternal(data, mid+1, j)
 		merge(data, i, j, mid)
 	}
 }
